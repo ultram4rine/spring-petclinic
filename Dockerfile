@@ -17,4 +17,5 @@ RUN addgroup $APP_USER \
     && mkdir -p ${APP_HOME}
 COPY --from=build /home/app/target/*.jar ${APP_HOME}/app.jar
 RUN chown -R $APP_USER:$APP_USER ${APP_HOME}
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/usr/share/app/app.jar"]
